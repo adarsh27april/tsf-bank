@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TSF Bank Customers Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#584b4f">
+        <div class="container-fluid">
+            <span class="navbar-brand">
+                TSF Bank
+            </span>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center col-md-8 p-lg-4 mx-auto my-3">
+        <h3 class="display-6 fw-normal">Welcome to</h3>
+        <div class="text-center col-md-8 p-lg-4 mx-auto my-3"><img src="./bank1.png" alt="bank img" /></div>
+        <h1 class="display-3 fw-normal">The Sparks Foundation Bank</h1>
+    </div>
+    <!-- <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div> -->
+
+
+
+    <div class="my-5 col-sm-3 container">
+        <form action="/formData" method="POST">
+            <div class="input-group mb-3">
+                <input id="sender" name="sender" type="text" class="form-control" placeholder="Sender's Account Number">
+            </div>
+            <div class="input-group mb-3">
+                <input id="receiver" name="receiver" type="text" class="form-control"
+                    placeholder="Recipient's Account Number">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">₹</span>
+                <input id="money" name="money" type="text" class="form-control">
+                <span class="input-group-text">.00</span>
+            </div>
+            <div class="text-center">
+                <button id="sendMoney" class="btn btn-outline-success" data-toggle="modal" data-target="#sendMoney">
+                    Send
+                    Money</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 1 -->
+    <% if( alert !='' ) {%>
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <%= alert %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+            <!-- 1 ends -->
+
+
+            <div class="container table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr class="table-danger">
+                            <th scope="col">Account Number</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">E-mail ID</th>
+                            <th scope="col">Bank Balance(in ₹)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="list">
+                        <!-- <tr class="table-light" id='1'>
+                    <td id='accNo-1'>1</td>
+                    <td id="name-1">Rishika</td>
+                    <td id="email-1">rishika@email.com</td>
+                    <td id="balance-1">5000</td>
+                </tr> -->
+
+                        <% for(var i=0; i < userList.length; i++) {%>
+                            <tr class="table-light">
+                                <td>
+                                    <%= userList[i].accNo %>
+                                </td>
+                                <td>
+                                    <%= userList[i].name %>
+                                </td>
+                                <td>
+                                    <%= userList[i].email %>
+                                </td>
+                                <td>
+                                    <%= userList[i].balance %>
+                                </td>
+                            </tr>
+                            <% } %>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <footer class="footer mt-auto py-1" style="background-color: #584b4f; color: white">
+                <div class="container">
+                    <span class="">Copyright ©2021 Adarsh Kumar Singh</span>
+                </div>
+            </footer>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+                crossorigin="anonymous"></script>
+</body>
+
+<script src="./main.js"></script>
+<script src="./notif.js"></script>
+
+</html>
