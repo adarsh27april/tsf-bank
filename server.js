@@ -1,9 +1,11 @@
+require('dotenv').config()
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 
-const connectionString = 'mongodb+srv://aks:tsf-bank-aks@cluster0.lvppm.mongodb.net/customers?retryWrites=true&w=majority';
+const connectionString = process.env.mongoDB_String;
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
@@ -111,8 +113,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             res.redirect('/');
         });
 
-    const port = process.env.PORT || 3000    
-    app.listen(port, function () {
+        const port = process.env.PORT || 4300
+        app.listen(port, function () {
             console.log(`listening on ${port}`)
         });
     });
